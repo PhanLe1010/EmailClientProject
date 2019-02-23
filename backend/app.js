@@ -16,7 +16,7 @@ var data =  [{"id":"1","received":"2019-02-05T14:19:07.619Z","from":"Ronny_Breit
 
 
 app.post('/api/sent_emails',(req, res, next) => {
-  req.body.id = data.length;
+  req.body.id = data.length + 3;
   data.unshift(req.body);
   res.status(201).json({
       message: "fail",
