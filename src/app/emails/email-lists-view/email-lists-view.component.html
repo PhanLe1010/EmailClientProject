@@ -1,0 +1,32 @@
+<div class = "container-list-view">
+
+  <form class="delete-form"
+        *ngIf="selectedEmails.length"
+        (click)= "deleteMultipleMessage()">
+      <button mat-button color = "warn">
+          DELETE
+          <i class="material-icons">delete_outline</i>
+      </button>
+  </form>
+
+    <mat-card *ngFor="let email of this.emails"
+              class = "email-item"
+              id = {{email.id}}
+              (click) = "openDialog($event)">
+
+      <mat-checkbox color = "primary"
+                    (change)= "selectCheckbox($event)"
+                    id = {{email.id}}>
+                    </mat-checkbox>
+      <span class = "email-address" id = {{email.id}} > {{email.from}}</span>
+      <span style = "float: right" id = {{email.id}} > {{email.received | date}} </span>
+      <p class = "text-preview" id = {{email.id}} >
+        {{ email.subject.length > 100 ? email.subject.substring(0,100) + '...' : email.subject }} ||
+        {{ email.text.length > 100 ? email.text.substring(0,100) + '...' : email.text }}
+      </p>
+    </mat-card>
+
+
+</div>
+
+

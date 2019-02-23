@@ -1,0 +1,44 @@
+
+<form (submit)="onSend(newEmailForm)" id = "newEmailForm" #newEmailForm = "ngForm"
+      class="create-email-form, mat-card">
+
+  <mat-form-field class="full-width">
+    <input matInput placeholder="To:"
+           name="toEmail"
+           ngModel
+           required
+           #toEmail = "ngModel">
+    <mat-error *ngIf="toEmail.invalid">Please enter email!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Subject:"
+           name="subject"
+           ngModel
+           required
+           #subject = "ngModel">
+    <mat-error *ngIf="toEmail.invalid">Please enter subject!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <textarea matInput
+              placeholder="Type your message here"
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="20"
+              name="text"
+              required
+              ngModel
+              #subject = "ngModel"></textarea>
+    <mat-error *ngIf="text.invalid">Please enter subject!</mat-error>
+  </mat-form-field>
+
+  <a mat-button
+          color = "warn"
+          (click)="clearForm()">CLEAR</a>
+
+  <button mat-button
+          color = "primary"
+          type= "submit" >SEND</button>
+
+</form>
+

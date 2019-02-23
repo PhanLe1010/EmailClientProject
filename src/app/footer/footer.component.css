@@ -1,0 +1,12 @@
+section  {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  color: white;
+  background: url("./bg-bottom.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center
+}
+

@@ -1,0 +1,14 @@
+
+      <mat-card-title>{{data.subject}}</mat-card-title>
+      <mat-card-subtitle>{{data.from}}</mat-card-subtitle>
+    <hr>
+
+    <mat-card-content>
+      <p>{{data.text}}</p>
+      <p>{{data.received | date}}</p>
+    </mat-card-content>
+
+    <div mat-dialog-actions style = "padding-top: 30px">
+        <button mat-button (click)="onNoClick()">BACK</button>
+        <button mat-button mat-button color = "warn" [mat-dialog-close]="data.id" cdkFocusInitial>DELETE</button>
+    </div>

@@ -1,0 +1,21 @@
+
+.email-address{
+  font-weight: bold;
+  padding-left: 10px;
+}
+.text-preview{
+  padding-left: 30px;
+}
+
+.email-item:hover{
+  background: #eceff1;
+  color: #3f51b5;
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .container-list-view{
+    width: 100%;
+  }
+}
