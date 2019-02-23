@@ -13,7 +13,7 @@ Font-End: Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## Quick live preview without having to install any package
 I am running the app at an online IDE which can be preview here https://email-client-project-phandaika94.c9users.io:8081/ <br>
-The online IDE does not run all the time. Therefore, I may need to start the IDE again in order for the above link to work.
+The online IDE does not run all the time. Therefore, I may need to start the IDE again in order for the above link to work. Please let me know if there any problem. Thank you!
 
 
 
