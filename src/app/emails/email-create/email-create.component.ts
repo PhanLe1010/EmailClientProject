@@ -23,6 +23,7 @@ export class EmailCreateComponent implements OnInit {
   }
 
   clearForm(){
+    //@ts-ignore TS2349
     document.getElementById('newEmailForm').reset();
   }
 
