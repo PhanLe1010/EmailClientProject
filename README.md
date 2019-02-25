@@ -1,10 +1,10 @@
 # EmailClientProject
 
-This project was built using NodeJs, Express on the Back-End and Angular on the Font-End
+This project was built using `NodeJs`, `Express` on the Back-End and `Angular`, `Material` on the Font-End
 
 ## Requirement
-Installed nodejs 11.10.0  <br>
-Installed Angular CLI 7.3.1
+Installed `NodeJs 11.10.0` <br>
+Installed `Angular CLI 7.3.1`
 
 ## Development server
 Npm install dependences: `npm install` <br>
