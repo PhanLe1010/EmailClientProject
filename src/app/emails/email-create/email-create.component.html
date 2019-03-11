@@ -1,5 +1,5 @@
 
-<form (submit)="onSend(newEmailForm)" id = "newEmailForm" #newEmailForm = "ngForm"
+<form (submit)="onSend(newEmailForm)" #newEmailForm = "ngForm"
       class="create-email-form, mat-card">
 
   <mat-form-field class="full-width">
@@ -34,7 +34,7 @@
 
   <a mat-button
           color = "warn"
-          (click)="clearForm()">CLEAR</a>
+          (click)="clearForm(newEmailForm)">CLEAR</a>
 
   <button mat-button
           color = "primary"

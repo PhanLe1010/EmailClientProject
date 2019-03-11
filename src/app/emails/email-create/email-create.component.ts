@@ -22,9 +22,8 @@ export class EmailCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  clearForm(){
-    //@ts-ignore TS2349
-    document.getElementById('newEmailForm').reset();
+  clearForm(form: NgForm){
+    form.reset();
   }
 
   onSend(form: NgForm) {
