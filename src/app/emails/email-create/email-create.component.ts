@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms';
 import { EmailsService } from '../emails.service';
 import {HttpClient} from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
-
 @Component({
   selector: 'app-email-create',
   templateUrl: './email-create.component.html',
@@ -22,6 +21,7 @@ export class EmailCreateComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Fixed the property does not exist error
   clearForm(form: NgForm){
     form.reset();
   }

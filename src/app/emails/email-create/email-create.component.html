@@ -28,17 +28,19 @@
               name="text"
               required
               ngModel
-              #subject = "ngModel"></textarea>
-    <mat-error *ngIf="text.invalid">Please enter subject!</mat-error>
+              #text = "ngModel"></textarea>
+
   </mat-form-field>
 
   <a mat-button
           color = "warn"
-          (click)="clearForm(newEmailForm)">CLEAR</a>
+          (click)="clearForm(newEmailForm)"
+          [disabled]="!newEmailForm.form.dirty">CLEAR</a>
 
   <button mat-button
           color = "primary"
-          type= "submit" >SEND</button>
+          type= "submit"
+          [disabled]="!newEmailForm.form.valid">SEND</button>
 
 </form>
 

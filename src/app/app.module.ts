@@ -9,7 +9,8 @@ import {MatInputModule,
         MatTabsModule,
         MatCheckboxModule,
         MatSnackBarModule,
-        MatDialogModule} from '@angular/material';
+        MatDialogModule,
+        MatToolbarModule} from '@angular/material';
 import {TextFieldModule} from '@angular/cdk/text-field';
 
 import { AppComponent } from './app.component';
@@ -19,7 +20,16 @@ import { EmailListsViewComponent } from './emails/email-lists-view/email-lists-v
 import { SingleViewComponent } from './emails/single-view/single-view.component';
 import { ModalComponent } from './modal/modal.component';
 import { FooterComponent } from './footer/footer.component';
+import { LogInComponent } from './log-in/log-in.component';
+import {Routes, RouterModule} from '@angular/router';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
+
+
+const appRoutes: Routes = [
+  {path: '', component: HeaderComponent},
+  {path: 'login', component: LogInComponent},
+];
 
 
 @NgModule({
@@ -30,7 +40,9 @@ import { FooterComponent } from './footer/footer.component';
     EmailListsViewComponent,
     SingleViewComponent,
     ModalComponent,
-    FooterComponent
+    FooterComponent,
+    LogInComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +56,9 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     MatSnackBarModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent],

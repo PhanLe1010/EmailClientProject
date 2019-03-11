@@ -20,7 +20,8 @@ export class EmailListsViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.emails = this.emailService.getEmails();
+    this.emailService.getEmails();
+    this.emails = this.emailService.emails;
   }
 
   selectCheckbox($event){
