@@ -64,7 +64,7 @@ app.delete('/api/sent_emails/:id',(req, res, next) => {
   if(foundEmail){
     res.status(200).json({
       message: "successfully delete email",
-      email: undefined;
+      email: undefined
     });
   }else{
     res.status(500).json({
