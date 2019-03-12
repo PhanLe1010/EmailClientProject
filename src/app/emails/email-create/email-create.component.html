@@ -1,12 +1,13 @@
 
 <form (submit)="onSend(newEmailForm)" #newEmailForm = "ngForm"
-      class="create-email-form, mat-card">
+      class="create-email-form mat-card">
 
   <mat-form-field class="full-width">
     <input matInput placeholder="To:"
            name="toEmail"
            ngModel
            required
+           [(ngModel)]="initToEmail"
            #toEmail = "ngModel">
     <mat-error *ngIf="toEmail.invalid">Please enter email!</mat-error>
   </mat-form-field>
@@ -16,6 +17,7 @@
            name="subject"
            ngModel
            required
+           [(ngModel)]="initSubject"
            #subject = "ngModel">
     <mat-error *ngIf="toEmail.invalid">Please enter subject!</mat-error>
   </mat-form-field>
@@ -27,6 +29,7 @@
               cdkAutosizeMinRows="20"
               name="text"
               required
+              [(ngModel)]="initText"
               ngModel
               #text = "ngModel"></textarea>
 

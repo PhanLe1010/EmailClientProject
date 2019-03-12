@@ -15,6 +15,7 @@ export class EmailsService {
   getEmails(){
     this.http.get<{message: string, emails: Email[]}>('http://localhost:3000/api/sent_emails')
         .subscribe((data) => {
+          this.emails.length = 0;
           data.emails.forEach((email)=>{
             this.emails.push(email);
           })
@@ -22,12 +23,16 @@ export class EmailsService {
             a.received >= b.received ? -1 : 1
           ));
         });
-        console.log(this.emails);
     return this.emails;
-
-
   }
 
+  getEmailById(emailId: string){
+    return this.http.get<{message: string, email: Email}>('http://localhost:3000/api/sent_emails/' + emailId);
+  }
+
+  deleteEmailById(emailId: string){
+    return this.http.delete('http://localhost:3000/api/sent_emails/' + emailId);
+  }
 
 
 

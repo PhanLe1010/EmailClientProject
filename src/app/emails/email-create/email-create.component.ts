@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { EmailsService } from '../emails.service';
 import {HttpClient} from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-email-create',
   templateUrl: './email-create.component.html',
@@ -14,11 +15,40 @@ export class EmailCreateComponent implements OnInit {
   subject = '';
   text = '';
 
+
+  initToEmail = '';
+  initSubject = '';
+  initText = '';
+  url = '';
   constructor(public emailService: EmailsService,
               private http: HttpClient,
-              public snackbar: MatSnackBar) { }
+              public snackbar: MatSnackBar,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.url = this.route.snapshot.url[2] ? this.route.snapshot.url[2].path : '';
+
+    // if use this component to REPLY
+    if(this.url == "reply"){
+      this.emailService.getEmailById( this.route.snapshot.url[1].path).subscribe(
+        (data)=>{
+          this.initToEmail = data.email.from;
+          this.initSubject = 'RE: ' + data.email.subject;
+          this.initText = '\n\n\n"' + data.email.text + '"';
+        }
+      )
+    }
+
+    // if use this component to FORWARD
+    if(this.url == "forward"){
+      this.emailService.getEmailById( this.route.snapshot.url[1].path).subscribe(
+        (data)=>{
+          this.initToEmail = '';
+          this.initSubject = 'FW: ' + data.email.subject;
+          this.initText = '\n\n\n"' + data.email.text + '"';
+        }
+      )
+    }
   }
 
   // Fixed the property does not exist error

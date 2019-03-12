@@ -1,12 +1,12 @@
 section  {
-  margin-top: 20px;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  position: fixed;
+  bottom: 0;
   color: white;
   background: url("./bg-bottom.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  text-align: center
+  text-align: center;
+  width: 100%;
 }
 

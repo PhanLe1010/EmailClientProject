@@ -8,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  navLinks = [
+    {path: ['/', 'inbox'], label: 'Inbox'},
+    {path: ['/', 'outbox'], label: 'Outbox'},
+    {path: ['/', 'newEmail'], label: 'Compose New Email'},
+    {path: ['/', 'login'], label: 'Login'},
+  ]
   constructor() { }
 
   ngOnInit() {

@@ -27,8 +27,15 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 const appRoutes: Routes = [
-  {path: '', component: HeaderComponent},
+  {path: '', redirectTo: 'inbox', pathMatch: 'full'},
+  {path: 'inbox', component: EmailListsViewComponent},
+  {path: 'inbox/:id', component: SingleViewComponent},
+  {path: 'inbox/:id/reply', component: EmailCreateComponent},
+  {path: 'inbox/:id/forward', component: EmailCreateComponent},
+  {path: 'outbox', component: EmailListsViewComponent},
+  {path: 'outbox/:id', component: SingleViewComponent},
   {path: 'login', component: LogInComponent},
+  {path: 'newEmail', component: EmailCreateComponent},
 ];
 
 

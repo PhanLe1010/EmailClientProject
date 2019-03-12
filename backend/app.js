@@ -16,13 +16,14 @@ var data =  [{"id":"1","received":"2019-02-05T14:19:07.619Z","from":"Ronny_Breit
 var new_id = 100;
 
 app.post('/api/sent_emails',(req, res, next) => {
-  req.body.id = new_id;
+  req.body.id = String(new_id);
   new_id++;
   data.unshift(req.body);
   res.status(201).json({
       message: "fail",
       email: req.body
   });
+  console.log(req.body)
 });
 
 app.get('/api/sent_emails',(req, res, next) => {
@@ -30,6 +31,46 @@ app.get('/api/sent_emails',(req, res, next) => {
       message: "successfully get sent emails",
       emails: data
   });
+});
+
+app.get('/api/sent_emails/:id',(req, res, next) => {
+  foundEmail = undefined;
+  data.forEach(email=>{
+    if (email.id == req.params.id){
+      foundEmail = email;
+    }
+  })
+  console.log(foundEmail);
+  if(foundEmail){
+    res.status(200).json({
+      message: "successfully get sent emails",
+      email: foundEmail
+    });
+  }else{
+    res.status(500).json({
+      message: "error"
+    });
+  }
+});
+
+app.delete('/api/sent_emails/:id',(req, res, next) => {
+  let foundEmail = false;
+  for(let i = 0; i < data.length; i++){
+    if (data[i].id == req.params.id){
+      data.splice(i,1);
+      foundEmail = true;
+    }
+  }
+  if(foundEmail){
+    res.status(200).json({
+      message: "successfully delete email",
+      email: undefined;
+    });
+  }else{
+    res.status(500).json({
+      message: "error"
+    });
+  }
 });
 
 module.exports = app;

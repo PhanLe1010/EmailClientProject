@@ -1,13 +1,12 @@
 
-<mat-tab-group dynamicHeight = "True"
-               mat-align-tabs="center"
-               mat-stretch-tabs
-               class = "taps-container">
-    <mat-tab label="VIEW ALL EMAILS">
-        <app-email-lists-view></app-email-lists-view>
-    </mat-tab>
-    <mat-tab label="CREATE NEW EMAIL">
-        <app-email-create></app-email-create>
-    </mat-tab>
-</mat-tab-group>
+<nav mat-tab-nav-bar mat-align-tabs="center">
+  <a mat-tab-link
+      mat-align-tabs="end"
+     *ngFor="let link of navLinks"
+     [routerLink]="link.path"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    {{link.label}}
+  </a>
 
+</nav>

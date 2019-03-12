@@ -4,6 +4,7 @@ import {EmailsService} from '../emails.service';
 import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { ModalComponent } from '../../modal/modal.component';
 import { MatSnackBar } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-email-lists-view',
@@ -14,27 +15,31 @@ export class EmailListsViewComponent implements OnInit {
   emails: Email[] = [];
   selectedEmails: string[] = [];
   deleteId: string;
+  url: string;
+
   constructor(public emailService: EmailsService,
               public dialog: MatDialog,
-              public snackbar: MatSnackBar) {
+              public snackbar: MatSnackBar,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.emailService.getEmails();
+    this.url = this.route.snapshot.url[0].path;
     this.emails = this.emailService.emails;
+    this.emailService.getEmails();
   }
 
-  selectCheckbox($event){
-    let id: string = $event.source.id;
+  selectCheckbox(event){
+    let id: string = event.source.id;
     let index = this.selectedEmails.indexOf(id);
 
-    if($event.source.checked && (index === -1)) {
+    if(event.source.checked && (index === -1)) {
       this.selectedEmails.push(id);
-    } else if (!($event.source.checked) && (index !== -1)){
+    } else if (!(event.source.checked) && (index !== -1)){
       this.selectedEmails.splice(index, 1);
     }
-
-    console.log(this.selectedEmails);
+    event.stopPropagation();
+    console.log(event);
   }
 
   deleteMultipleMessage(){
@@ -53,6 +58,14 @@ export class EmailListsViewComponent implements OnInit {
     this.snackbar.open('Deleted ' +count+ ' the messages!','', {duration: 3000});
   }
 
+
+}
+
+
+
+//  Refactor the view detail by using Routering techique instead of using dialog
+
+/*
   openDialog(event): void {
     let data: Email;
     console.log(event.target.id);
@@ -88,4 +101,5 @@ export class EmailListsViewComponent implements OnInit {
       }
     });
   }
-}
+
+  */
