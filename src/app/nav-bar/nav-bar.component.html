@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <span ><a [routerLink]="['/']"
+            routerLinkActive="router-link-active"
+            [routerLinkActiveOptions]="{exact: true}">Home</a></span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <span  style = "float: right"><a [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a></span>
+</mat-toolbar>

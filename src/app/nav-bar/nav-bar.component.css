@@ -1,0 +1,12 @@
+.example-fill-remaining-space {
+  flex: auto;
+}
+
+.router-link-active{
+  color:white;
+}
+
+a {
+  text-decoration: none;
+  color: #bdd5fc;
+}
