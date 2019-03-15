@@ -1,6 +1,7 @@
 section  {
-  position: fixed;
-  bottom: 0;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
   color: white;
   background: url("./bg-bottom.jpg");
   background-position: center;

@@ -13,7 +13,7 @@ export class EmailsService {
   constructor(private http: HttpClient) { }
 
   getEmails(){
-    this.http.get<{message: string, emails: Email[]}>('http://localhost:3000/api/sent_emails')
+    this.http.get<{message: string, emails: Email[]}>('https://email-client-project-phandaika94.c9users.io:8080/api/sent_emails')
         .subscribe((data) => {
           this.emails.length = 0;
           data.emails.forEach((email)=>{
@@ -27,11 +27,11 @@ export class EmailsService {
   }
 
   getEmailById(emailId: string){
-    return this.http.get<{message: string, email: Email}>('http://localhost:3000/api/sent_emails/' + emailId);
+    return this.http.get<{message: string, email: Email}>('https://email-client-project-phandaika94.c9users.io:8080/api/sent_emails/' + emailId);
   }
 
   deleteEmailById(emailId: string){
-    return this.http.delete('http://localhost:3000/api/sent_emails/' + emailId);
+    return this.http.delete('https://email-client-project-phandaika94.c9users.io:8080/api/sent_emails/' + emailId);
   }
 
 

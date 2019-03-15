@@ -43,7 +43,7 @@ export class SingleViewComponent implements OnInit {
     this.emailService.deleteEmailById(this.email.id).subscribe(
       (data) => {
         this.router.navigate(['/', this.url]);
-        this.snackbar.open('Successfully delete message!','', {duration: 3000});
+        this.snackbar.open('Successfully delete message!','', {duration: 3000, verticalPosition: 'top', panelClass: ['blue-snackbar']});
       }
     );
   }

@@ -70,16 +70,26 @@ export class EmailCreateComponent implements OnInit {
       read: false
     };
 
-    this.http.post<{message: string, email: Email}>('http://localhost:3000/api/sent_emails ', newEmail)
+    this.http.post<{message: string, email: Email}>('https://email-client-project-phandaika94.c9users.io:8080/api/sent_emails ', newEmail)
         .subscribe(
           data => {
             form.resetForm();
             console.log(data.email);
-            this.snackbar.open('Successfully sent message!','', {duration: 3000});
             this.emailService.emails.unshift(data.email);
+            let snackBarRef = this.snackbar.open('Successfully sent message!',
+                                'View', 
+                                {duration: 3000, 
+                                 verticalPosition: 'top', 
+                                 panelClass: ['blue-snackbar'],
+                                });
+            
+            snackBarRef.onAction().subscribe(() => {
+              
+            })
+            
           },
           error => {
-            this.snackbar.open('Error! Couldn\'t sent the message','', {duration: 3000});
+            this.snackbar.open('Error! Couldn\'t sent the message','', {duration: 3000, verticalPosition: 'top', panelClass: ['blue-snackbar']});
           }
         );
 

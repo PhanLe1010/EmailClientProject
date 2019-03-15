@@ -55,7 +55,7 @@ export class EmailListsViewComponent implements OnInit {
       }
     }
     this.selectedEmails = [];
-    this.snackbar.open('Deleted ' +count+ ' the messages!','', {duration: 3000});
+    this.snackbar.open('Deleted ' +count+ ' the messages!','', {duration: 3000, verticalPosition: 'top', panelClass: ['blue-snackbar']});
   }
 
 
@@ -94,7 +94,7 @@ export class EmailListsViewComponent implements OnInit {
           for(let i = 0; i < this.emails.length; i++){
             if (this.deleteId == this.emails[i].id){
                 this.emails.splice(i,1);
-                this.snackbar.open('Message deleted successfully!','', {duration: 3000});
+                this.snackbar.open('Message deleted successfully!','', {duration: 3000, verticalPosition: 'top'});
                 return;
             }
           }
