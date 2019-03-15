@@ -5,5 +5,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .blue-snackbar {
   background: #1976d2;
-  color: white;
+  color: white !important;
+}
+.blue-snackbar button{
+  color: white !important;
+
 }

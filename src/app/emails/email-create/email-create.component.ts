@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { EmailsService } from '../emails.service';
 import {HttpClient} from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-email-create',
   templateUrl: './email-create.component.html',
@@ -23,7 +23,8 @@ export class EmailCreateComponent implements OnInit {
   constructor(public emailService: EmailsService,
               private http: HttpClient,
               public snackbar: MatSnackBar,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.url = this.route.snapshot.url[2] ? this.route.snapshot.url[2].path : '';
@@ -77,16 +78,16 @@ export class EmailCreateComponent implements OnInit {
             console.log(data.email);
             this.emailService.emails.unshift(data.email);
             let snackBarRef = this.snackbar.open('Successfully sent message!',
-                                'View', 
-                                {duration: 3000, 
-                                 verticalPosition: 'top', 
+                                'View',
+                                {duration: 4000,
+                                 verticalPosition: 'top',
                                  panelClass: ['blue-snackbar'],
                                 });
-            
+
             snackBarRef.onAction().subscribe(() => {
-              
+              this.router.navigate(['/', 'outbox', data.email.id]);
             })
-            
+
           },
           error => {
             this.snackbar.open('Error! Couldn\'t sent the message','', {duration: 3000, verticalPosition: 'top', panelClass: ['blue-snackbar']});
